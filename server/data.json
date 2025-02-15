@@ -1,0 +1,57 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Book",
+      "price": 200,
+      "quantity": 20,
+      "img": "https://m.media-amazon.com/images/I/71++XzvBcbL._AC_UY218_.jpg",
+      "category": "library",
+      "status": "IN STOCK"
+    },
+    {
+      "id": "d2f6",
+      "name": "Camera",
+      "price": "699",
+      "quantity": "0",
+      "category": "accessories",
+      "img": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "status": "IN STOCK"
+    },
+    {
+      "id": "495e",
+      "name": "Laptop acer aspire 3",
+      "price": "659",
+      "quantity": "4",
+      "category": "electronics",
+      "img": "https://m.media-amazon.com/images/I/61VP5u3eVhL._AC_UY218_.jpg",
+      "status": "IN STOCK"
+    },
+    {
+      "id": "9f86",
+      "name": "phone",
+      "price": "659",
+      "quantity": "0",
+      "category": "electronics",
+      "img": "https://m.media-amazon.com/images/I/61Lp1UcxeLL._AC_UY218_.jpg",
+      "status": "OUT OF STOCK"
+    },
+    {
+      "id": "dc33",
+      "name": "Soundcore Wireless Noise Cancelling Earbuds, White, Small, A3947",
+      "price": "300",
+      "quantity": "54",
+      "category": "electronics",
+      "img": "https://m.media-amazon.com/images/I/41OwyjGaK5L.__AC_SX300_SY300_QL70_ML2_.jpg",
+      "status": "IN STOCK"
+    },
+    {
+      "id": "39bf",
+      "name": "Mintra Men's Cai Slip On Shoes",
+      "price": "350",
+      "quantity": "12",
+      "category": "fashion",
+      "img": "https://m.media-amazon.com/images/I/71FA+zbp8zL._AC_SX625_.jpg"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+/* #customCarousel1{
+    bottom: 0%;
+    left: 5%;
+}
+
+ */
+#sliderSection{
+    height: '80vh';
+    overflow: 'hidden' ;
+}
