@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
 	addNewProduct,
 	deleteProduct,
+	editProduct,
 	getAllProducts,
 } from "../api/productapi";
 
@@ -42,12 +43,25 @@ export const addProductAction = createAsyncThunk(
 	async (product, { rejectWithValue }) => {
 		try {
 			let response = await addNewProduct(product);
-			return response.data;
+			return response.data; //returns the added product to the store
 		} catch (error) {
 			return rejectWithValue(error);
 		}
 	}
 );
+
+export const editProductAction = createAsyncThunk(
+	"product/editProductAction",
+	async ({id, product}, { rejectWithValue }) => {
+		try {
+			let response = await editProduct(id , product);
+			return response.data; //returns the edited product to the store
+		} catch (error) {
+			return rejectWithValue(error);
+		}
+	}
+)
+
 const productSlice = createSlice({
 	name: "product",
 	initialState,

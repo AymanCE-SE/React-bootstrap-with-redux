@@ -5,10 +5,13 @@ import { Container, Card, Form, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { addNewProduct, editProduct, getProductById } from "../api/productapi";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProductAction, editProductAction } from "../store/productSlice";
 
 export function ProductForm() {
   const navigate = useNavigate(); //to navigate after submit button
   const { id } = useParams(); //for edit case
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -46,9 +49,10 @@ export function ProductForm() {
     e.preventDefault();
     // for adding new product condition
     if (id == 0) {
-      await addNewProduct(formData);
+      await dispatch(addProductAction(formData));
     } else {
-      await editProduct(id, formData); // for edit product condition sending it
+      await dispatch(editProductAction({ id, product: formData }));
+      // await editProduct(id, formData); // for edit product condition sending it
     }
     navigate("/products");
   };
