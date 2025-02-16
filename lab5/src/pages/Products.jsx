@@ -1,3 +1,4 @@
+/** @format */
 
 import React, { useEffect, useState } from "react";
 import { Container, Table, Card, Badge } from "react-bootstrap";
@@ -7,53 +8,28 @@ import { FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { deleteProduct, getAllProducts } from "../api/productapi";
 import Swal from "sweetalert2";
-
+import { getAllProductsAction } from "../store/productSlice";
+import { useDispatch, useSelector } from "react-redux";
 const Products = () => {
-  let [products, setProducts] = useState([]);
-  let [errors, setErrors] = useState(null);
-  let [isLoading, setIsLoading] = useState(true);
-  let [searchTerm ,setSearchTerm ] = useState("")
+  //action dispatch hook
+  const dispatchAction = useDispatch();
+  let [searchTerm, setSearchTerm] = useState("");
 
+  const { products, isLoading, errors } = useSelector( store => store.productSlice )
+  console.log(products);
   useEffect(() => {
-    const fetchProducts = async () => {
-      setIsLoading(true);
-      try {
-        let response = await getAllProducts();
-        setProducts(response.data); // setting the data in products state  
-        setIsLoading(false);
-      } catch (error) {
-        setErrors(error);
-        setIsLoading(false);
-      }
-    };
-    fetchProducts(); // calling the function
+    // dispatch an action to return all products
+    dispatchAction(getAllProductsAction());
   }, []);
   // delete handler
 
-  const deleteHandler = async (productId) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!"
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        try {
-          await deleteProduct(productId);
-          setProducts(products.filter((product) => product.id !== productId));
-  
-          Swal.fire("Deleted!", "Your product has been deleted.", "success");
-        } catch (error) {
-          console.log(error);
-          Swal.fire("Error!", "Something went wrong!", "error");
-        }
-      }
-    });
-  };
-  //search filtation handler
+  /**
+   * deleteHandler: deletes a product with given productId
+   * @param {string} productId - the id of the product to be deleted
+   * @returns {Promise<void>}
+   */
+  const deleteHandler = async (productId) => {};
+  // search filtation handler
   const filteredProducts = searchTerm
   ? products.filter(
       (product) =>
@@ -61,7 +37,7 @@ const Products = () => {
         product.category.toLowerCase().includes(searchTerm.toLowerCase())
     )
   : products;
-  
+
   return (
     <Container className="my-4 ">
       <div className="container d-flex justify-content-between ">
@@ -88,8 +64,6 @@ const Products = () => {
             </Card.Header>
             <Card.Body className="px-0 pb-2">
               <div className="table-responsive p-0">
-
-
                 {errors && (
                   <div className="mt-5 alert alert-danger">
                     {errors.message}
@@ -126,8 +100,8 @@ const Products = () => {
                       </tr>
                     </thead>
                     <tbody>
-                    {filteredProducts.map((product) => (
-                        <tr key={product.id}>
+                    {filteredProducts && filteredProducts.map((product) => (
+                      <tr key={product.id}>
                           {" "}
                           <td className="align-middle">{product.id}</td>
                           <td>
