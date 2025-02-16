@@ -3,22 +3,34 @@ import { Container, Card, Row, Col, Badge, Button } from "react-bootstrap";
 import { IoArrowBack, IoStarHalf } from "react-icons/io5";
 import { IoIosStar } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
-import { getProductById } from "../api/productapi";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProductsAction } from "../store/productSlice";
 
 export function ProductDetails() {
   const { id } = useParams();
-  const [product, setProduct] = useState({});
-  useEffect(() => {
-    const fetchProduct = (id) => {
-      getProductById(id)
-        .then((response) => setProduct(response.data))
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-    fetchProduct( id);
-  }, []);
+  const dispatch = useDispatch();
+  const { products, isLoading } = useSelector((store) => store.productSlice);
+  
+  const [product, setProduct] = useState(null);
 
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(getAllProductsAction());
+    }
+  }, [dispatch, products.length]);
+
+  useEffect(() => {
+    const foundProduct = products.find((product) => product.id == id);
+    setProduct(foundProduct || null);
+  }, [products, id]);
+
+  if (isLoading) {
+    return <h2 className="text-center alert alert-info">Loading...</h2>;
+  }
+
+  if (!product) {
+    return <h2 className="text-center text-danger">Product Not Found</h2>;
+  }
   return (
     <Container className="my-4">
       <Row>
