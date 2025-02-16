@@ -2,12 +2,11 @@
   "products": [
     {
       "id": "1",
-      "name": "Book",
-      "price": 200,
-      "quantity": 20,
-      "img": "https://m.media-amazon.com/images/I/71++XzvBcbL._AC_UY218_.jpg",
+      "name": "Your Psychological Contract Is Your Eternal Prison Arabic By Yousef Al Hosny, 38546 Paperback Arabic by Yousef Al Hosny - 38546",
+      "price": "99",
       "category": "library",
-      "status": "IN STOCK"
+      "img": "https://f.nooncdn.com/p/pnsku/N48987347A/45/_/1696838105/4453fe56-c671-4340-a137-ec1862be60fe.jpg?format=avif&width=800",
+      "quantity": "72"
     },
     {
       "id": "d2f6",
@@ -52,6 +51,23 @@
       "quantity": "12",
       "category": "fashion",
       "img": "https://m.media-amazon.com/images/I/71FA+zbp8zL._AC_SX625_.jpg"
+    },
+    {
+      "id": "cf7d",
+      "name": "Galaxy S24 Ultra 5G Dual SIM Titanium Gray 12GB RAM 256GB - Middle East Version",
+      "price": "1100",
+      "quantity": "22",
+      "category": "electronics",
+      "img": "https://f.nooncdn.com/p/pnsku/N70035206V/45/_/1712239207/3e7c97e2-cf7d-48ee-b324-a5d4aa30efe8.jpg?format=avif&width=800",
+      "status": "IN STOCK"
+    },
+    {
+      "id": "9acd",
+      "name": "PlayStation 5 Slim Console (International Version) Digital Edition With Controller",
+      "price": "3000",
+      "quantity": "6",
+      "category": "electronics",
+      "img": "https://f.nooncdn.com/p/pnsku/N70022612V/45/_/1699418559/6b1cfe46-2782-4a5e-a20b-0b5830c73930.jpg?format=avif&width=800"
     }
   ]
 }
