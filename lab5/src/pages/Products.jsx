@@ -8,7 +8,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { deleteProduct, getAllProducts } from "../api/productapi";
 import Swal from "sweetalert2";
-import { getAllProductsAction } from "../store/productSlice";
+import { deleteProductAction, getAllProductsAction } from "../store/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 const Products = () => {
   //action dispatch hook
@@ -28,7 +28,29 @@ const Products = () => {
    * @param {string} productId - the id of the product to be deleted
    * @returns {Promise<void>}
    */
-  const deleteHandler = async (productId) => {};
+  const deleteHandler = async (productId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        try {
+          dispatchAction(deleteProductAction(productId));
+  
+          Swal.fire("Deleted!", "Your product has been deleted.", "success");
+        } catch (error) {
+          console.log(error);
+          Swal.fire("Error!", "Something went wrong!", "error");
+        }
+      }
+    });
+  };
+  
   // search filtation handler
   const filteredProducts = searchTerm
   ? products.filter(

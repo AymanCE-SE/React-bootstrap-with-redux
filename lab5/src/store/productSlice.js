@@ -29,7 +29,7 @@ export const deleteProductAction = createAsyncThunk(
 	"product/deleteProductAction",
 	async (productId, { rejectWithValue }) => {
 		try {
-			await deleteProduct(productId);
+			let response = await deleteProduct(productId);
 			return productId;
 		} catch (error) {
 			return rejectWithValue(error);
