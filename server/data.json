@@ -68,6 +68,23 @@
       "quantity": "6",
       "category": "electronics",
       "img": "https://f.nooncdn.com/p/pnsku/N70022612V/45/_/1699418559/6b1cfe46-2782-4a5e-a20b-0b5830c73930.jpg?format=avif&width=800"
+    },
+    {
+      "id": "8c7e",
+      "name": "iPhone 16 Pro Max 256GB Desert Titanium 5G With FaceTime - International Version",
+      "price": "1200",
+      "quantity": "6",
+      "category": "electronics",
+      "img": "https://f.nooncdn.com/p/pnsku/N70106183V/45/_/1726043631/3064c465-3457-42ef-a234-0b6382365281.jpg?format=avif&width=800"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "ayman samir",
+      "email": "ayman@admin.com",
+      "password": "22101995",
+      "role": "admin"
     }
   ]
 }

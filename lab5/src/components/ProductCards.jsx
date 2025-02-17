@@ -49,7 +49,14 @@ export function ProductCards() {
     );
   }
 
-  return (
+  return (<>
+    <Card.Header className="bg-danger border-radius-lg p-4 rounded-3 shadow">
+      <div className="d-flex justify-content-center align-items-center">
+        <h5 className="text-white fs-3 text-capitalize mb-0">
+          Our Products
+        </h5>
+      </div>
+    </Card.Header>
     <Container className="my-5">
       <Row className="g-4">
         {products.map((product) => (
@@ -111,6 +118,6 @@ export function ProductCards() {
           </Col>
         ))}
       </Row>
-    </Container>
+    </Container></>
   );
 }
