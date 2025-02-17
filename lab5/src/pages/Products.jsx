@@ -11,14 +11,13 @@ import Swal from "sweetalert2";
 import { deleteProductAction, getAllProductsAction } from "../store/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 const Products = () => {
-  //action dispatch hook
   const dispatchAction = useDispatch();
   let [searchTerm, setSearchTerm] = useState("");
 
   const { products, isLoading, errors } = useSelector( store => store.productSlice )
   console.log(products);
   useEffect(() => {
-    // dispatch an action to return all products
+    // dispatch action and return all products
     dispatchAction(getAllProductsAction());
   }, []);
   // delete handler

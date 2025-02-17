@@ -1,10 +1,30 @@
-/* #customCarousel1{
-    bottom: 0%;
-    left: 5%;
-}
-
- */
-#sliderSection{
-    height: '80vh';
-    overflow: 'hidden' ;
-}
+/* HomeSlider.css */
+.slider-section {
+    height: 80vh;
+    overflow: hidden;
+  }
+  
+  /* Carousel control improvements */
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5%;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    border-radius: 50%;
+  }
+  
+  /* Indicator styling */
+  .carousel-indicators {
+    margin-bottom: 2rem;
+  }
+  
+  .carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+  }
