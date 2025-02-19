@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Card, Row, Col, Badge, Button } from "react-bootstrap";
+import { Container, Card, Row, Col, Badge } from "react-bootstrap";
 import { IoArrowBack, IoStarHalf } from "react-icons/io5";
 import { IoIosStar } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
@@ -10,7 +10,7 @@ export function ProductDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { products, isLoading } = useSelector((store) => store.productSlice);
-  
+  const { currentUser } = useSelector((state) => state.userSlice);
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -31,6 +31,7 @@ export function ProductDetails() {
   if (!product) {
     return <h2 className="text-center text-danger">Product Not Found</h2>;
   }
+
   return (
     <Container className="my-4">
       <Row>
@@ -59,13 +60,15 @@ export function ProductDetails() {
                       <Col md={12}>
                         <h3 className="mb-3">{product?.name}</h3>
 
-
-                        {product?.quantity > 0 ? <Badge bg="success" className="fs-6 mb-3">
-                          IN STOCK
-                        </Badge>:
-                        <Badge bg="danger" className="fs-6 mb-3">
-                          OUT OF STOCK
-                        </Badge>}
+                        {product?.quantity > 0 ? (
+                          <Badge bg="success" className="fs-6 mb-3">
+                            IN STOCK
+                          </Badge>
+                        ) : (
+                          <Badge bg="danger" className="fs-6 mb-3">
+                            OUT OF STOCK
+                          </Badge>
+                        )}
                       </Col>
                     </Row>
 
@@ -121,9 +124,26 @@ export function ProductDetails() {
         </Col>
       </Row>
       <div>
-        <Link to="/products" className="me-2 btn btn-outline-success fw-bold">
-          <IoArrowBack className="me-1 mb-1" /> Back To Products
+        {/* Always show Back To Home button */}
+        <Link to="/" className="me-2 btn btn-outline-success fw-bold">
+          <IoArrowBack className="me-1 mb-1" /> Back To Home
         </Link>
+        
+        {/* Only show admin buttons if currentUser exists and is an admin */}
+        {currentUser?.role === "admin" && (
+          <>
+            <Link
+              to={`/products/${id}/edit`}
+              className="me-2 btn btn-outline-dark fw-bold">
+              Edit Product
+            </Link>
+            <Link
+              to={`/products`}
+              className="me-2 btn btn-outline-danger fw-bold">
+              To Products Dashboard
+            </Link>
+          </>
+        )}
       </div>
     </Container>
   );

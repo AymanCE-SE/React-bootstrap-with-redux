@@ -142,6 +142,13 @@
       "email": "fatma@gmail.com",
       "password": "22101995",
       "role": "user"
+    },
+    {
+      "id": "9e35",
+      "fullName": "hussein",
+      "email": "hussein@gmail.com",
+      "password": "123456",
+      "role": "user"
     }
   ]
 }

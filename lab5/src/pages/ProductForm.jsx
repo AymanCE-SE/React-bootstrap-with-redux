@@ -1,4 +1,3 @@
-/** @format */
 
 import React, { useEffect, useState } from "react";
 import { Container, Card, Form, Button, Row, Col } from "react-bootstrap";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaCartShopping } from "react-icons/fa6";
 import { logoutUserAction } from "../store/userSlice";
@@ -13,7 +13,7 @@ export function Header() {
 
   const handleLogout = () => {
     dispatch(logoutUserAction());
-    navigate("/login");
+    Navigate("/login");
   };
 
   const isAdmin = currentUser?.role === "admin";
@@ -63,7 +63,7 @@ export function Header() {
             {currentUser ? (
               <>
                 <span className="nav-link text-danger">
-                  Welcome, {currentUser.fullName}
+                  Welcome, {currentUser.fullName.split(" ")[0] + " !"}
                 </span>
                 {!isAdmin && (
                   <NavLink 
@@ -80,7 +80,7 @@ export function Header() {
                 <NavLink 
                   className="nav-link text-danger"
                   onClick={handleLogout}
-                  to="#"
+                  // to="/"
                   style={{ cursor: 'pointer' }}
                 >
                   Logout

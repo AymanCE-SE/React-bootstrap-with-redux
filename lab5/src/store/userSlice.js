@@ -1,12 +1,15 @@
-/** @format */
-
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { addNewUser, getAllUsers, getUserById } from "../api/userapi";
 
+// Get initial user from localStorage
+const storedUser = localStorage.getItem("user") 
+  ? JSON.parse(localStorage.getItem("user"))
+  : null;
+
 const initialState = {
   users: [],
-  currentUser: null,
-  isLoading: true,
+  currentUser: storedUser, // Initialize with stored user
+  isLoading: false,
   errors: null,
 };
 
@@ -81,50 +84,71 @@ export const logoutUserAction = createAsyncThunk(
   }
 );
 
-
-
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    // Add a reducer to sync with localStorage
+    syncWithLocalStorage: (state) => {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        state.currentUser = JSON.parse(storedUser);
+      }
+    }
+  },
   extraReducers: (builder) => {
-    builder.addCase(getAllUsersAction.pending, (state) => {
-      state.isLoading = true;
-    });
-    builder.addCase(getAllUsersAction.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.users = action.payload;
-    });
-    builder.addCase(getAllUsersAction.rejected, (state, action) => {
-      state.isLoading = false;
-      state.errors = action.payload;
-    });
+    builder
+      // getAllUsersAction
+      .addCase(getAllUsersAction.pending, (state) => {
+        state.isLoading = true;
+        state.errors = null;
+      })
+      .addCase(getAllUsersAction.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.users = action.payload;
+      })
+      .addCase(getAllUsersAction.rejected, (state, action) => {
+        state.isLoading = false;
+        state.errors = action.payload;
+      })
 
-    builder.addCase(registerUserAction.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.currentUser = action.payload;
-    });
+      // registerUserAction
+      .addCase(registerUserAction.pending, (state) => {
+        state.isLoading = true;
+        state.errors = null;
+      })
+      .addCase(registerUserAction.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.currentUser = action.payload;
+        state.errors = null;
+      })
+      .addCase(registerUserAction.rejected, (state, action) => {
+        state.isLoading = false;
+        state.errors = action.payload;
+      })
 
-    builder.addCase(loginUserAction.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.currentUser = action.payload;
-    });
+      // loginUserAction
+      .addCase(loginUserAction.pending, (state) => {
+        state.isLoading = true;
+        state.errors = null;
+      })
+      .addCase(loginUserAction.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.currentUser = action.payload;
+        state.errors = null;
+      })
+      .addCase(loginUserAction.rejected, (state, action) => {
+        state.isLoading = false;
+        state.errors = action.payload;
+      })
 
-    builder.addCase(registerUserAction.rejected, (state, action) => {
-      state.isLoading = false;
-      state.errors = action.payload;
-    });
-
-    builder.addCase(loginUserAction.rejected, (state, action) => {
-      state.isLoading = false;
-      state.errors = action.payload;
-    });
-
-    builder.addCase(logoutUserAction.fulfilled, (state) => {
-      state.currentUser = null;
-    });
-    
+      // logoutUserAction
+      .addCase(logoutUserAction.fulfilled, (state) => {
+        state.currentUser = null;
+        state.errors = null;
+      });
   },
 });
 
+export const { syncWithLocalStorage } = userSlice.actions;
 export const userReducer = userSlice.reducer;

@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useEffect } from "react";
 import { Container, Form, Button, Alert, Image } from "react-bootstrap";
 import { Eye, EyeOff } from "lucide-react";

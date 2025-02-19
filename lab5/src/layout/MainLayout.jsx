@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Header } from "../components/Header";
 import Products from "../pages/Products";
 import { ProductForm } from "../pages/ProductForm";
@@ -19,7 +19,15 @@ import SharedLayout from "../sharedlayout/SharedLayout";
 import Login from "../pages/login";
 import FooterOnlyLayout from "./FooterOnlyLayout";
 import Register from "../pages/register";
+import { useDispatch } from "react-redux";
+import { syncWithLocalStorage } from "../store/userSlice";
 export function MainLayout() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(syncWithLocalStorage());
+
+  }, [dispatch]);
   return (
     <>
       <BrowserRouter>
