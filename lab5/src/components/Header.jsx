@@ -55,7 +55,7 @@ export function Header() {
             )}
 
             <NavDropdown title="Pages" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Blog</NavDropdown.Item>
+              <Link className="dropdown-item" to={`/myprofile`}>My Profile</Link>
               <NavDropdown.Item href="#action/3.2">Contact Us</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">About</NavDropdown.Item>
             </NavDropdown>

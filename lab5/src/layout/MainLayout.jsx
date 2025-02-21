@@ -21,6 +21,7 @@ import FooterOnlyLayout from "./FooterOnlyLayout";
 import Register from "../pages/register";
 import { useDispatch } from "react-redux";
 import { syncWithLocalStorage } from "../store/userSlice";
+import Profile from "../pages/profile";
 export function MainLayout() {
   const dispatch = useDispatch();
 
@@ -38,6 +39,7 @@ export function MainLayout() {
             <Route path="Products" element={<Products />} />
             <Route path="Products/:id" element={<ProductDetails />} />
             <Route path="products/:id/edit" element={<ProductForm />} />
+            <Route path="myprofile" element={<Profile />} />
           </Route>
           {/* pages with footer only layout */}
           <Route path="/" element={<FooterOnlyLayout />}>

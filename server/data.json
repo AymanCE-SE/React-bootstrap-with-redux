@@ -81,7 +81,7 @@
       "id": "56bf",
       "name": "TP-Link TL-WA850RE 300Mbps Universal Wi-Fi Range Extender White",
       "price": "89",
-      "quantity": "6",
+      "quantity": "5",
       "category": "electronics",
       "img": "https://f.nooncdn.com/p/v1663755624/N11411335A_1.jpg?format=avif&width=800"
     }
@@ -92,7 +92,10 @@
       "fullName": "ayman samir",
       "email": "ayman@admin.com",
       "password": "22101995",
-      "role": "admin"
+      "role": "admin",
+      "phone": "01159090880",
+      "address": "Abu Hammad Elsharkya - Egypt",
+      "avatar": "https://via.placeholder.com/150"
     },
     {
       "id": "cfd3",

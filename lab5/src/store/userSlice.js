@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addNewUser, getAllUsers, getUserById } from "../api/userapi";
+import { addNewUser, getAllUsers, getUserById, editUser } from "../api/userapi";
 
 // Get initial user from localStorage
 const storedUser = localStorage.getItem("user") 
@@ -8,7 +8,7 @@ const storedUser = localStorage.getItem("user")
 
 const initialState = {
   users: [],
-  currentUser: storedUser, // Initialize with stored user
+  currentUser: storedUser,
   isLoading: false,
   errors: null,
 };
@@ -39,6 +39,25 @@ export const getUserByIdAction = createAsyncThunk(
   }
 );
 
+export const updateUserAction = createAsyncThunk(
+  "user/updateUserAction",
+  async ({ userId, userData }, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      let response = await editUser(userId, userData);
+      // Update localStorage if updating current user
+      const storedUser = localStorage.getItem("user");
+      if (storedUser && JSON.parse(storedUser).id === userId) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+      }
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+// Keep your existing actions
 export const registerUserAction = createAsyncThunk(
   "user/registerUserAction",
   async (user, thunkAPI) => {
@@ -88,7 +107,6 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    // Add a reducer to sync with localStorage
     syncWithLocalStorage: (state) => {
       const storedUser = localStorage.getItem("user");
       if (storedUser) {
@@ -112,7 +130,47 @@ const userSlice = createSlice({
         state.errors = action.payload;
       })
 
-      // registerUserAction
+      // getUserByIdAction
+      .addCase(getUserByIdAction.pending, (state) => {
+        state.isLoading = true;
+        state.errors = null;
+      })
+      .addCase(getUserByIdAction.fulfilled, (state, action) => {
+        state.isLoading = false;
+        // Update user in users array if exists
+        const index = state.users.findIndex(user => user.id === action.payload.id);
+        if (index !== -1) {
+          state.users[index] = action.payload;
+        }
+      })
+      .addCase(getUserByIdAction.rejected, (state, action) => {
+        state.isLoading = false;
+        state.errors = action.payload;
+      })
+
+      // updateUserAction
+      .addCase(updateUserAction.pending, (state) => {
+        state.isLoading = true;
+        state.errors = null;
+      })
+      .addCase(updateUserAction.fulfilled, (state, action) => {
+        state.isLoading = false;
+        // Update in users array
+        const index = state.users.findIndex(user => user.id === action.payload.id);
+        if (index !== -1) {
+          state.users[index] = action.payload;
+        }
+        // Update currentUser if it's the same user
+        if (state.currentUser?.id === action.payload.id) {
+          state.currentUser = action.payload;
+        }
+      })
+      .addCase(updateUserAction.rejected, (state, action) => {
+        state.isLoading = false;
+        state.errors = action.payload;
+      })
+
+      // Keep your existing cases
       .addCase(registerUserAction.pending, (state) => {
         state.isLoading = true;
         state.errors = null;
@@ -127,7 +185,6 @@ const userSlice = createSlice({
         state.errors = action.payload;
       })
 
-      // loginUserAction
       .addCase(loginUserAction.pending, (state) => {
         state.isLoading = true;
         state.errors = null;
@@ -142,7 +199,6 @@ const userSlice = createSlice({
         state.errors = action.payload;
       })
 
-      // logoutUserAction
       .addCase(logoutUserAction.fulfilled, (state) => {
         state.currentUser = null;
         state.errors = null;
