@@ -170,7 +170,6 @@ const userSlice = createSlice({
         state.errors = action.payload;
       })
 
-      // Keep your existing cases
       .addCase(registerUserAction.pending, (state) => {
         state.isLoading = true;
         state.errors = null;

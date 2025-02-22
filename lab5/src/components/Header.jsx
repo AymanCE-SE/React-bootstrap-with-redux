@@ -80,7 +80,7 @@ export function Header() {
                 <NavLink 
                   className="nav-link text-danger"
                   onClick={handleLogout}
-                  // to="/"
+                  to="/"
                   style={{ cursor: 'pointer' }}
                 >
                   Logout

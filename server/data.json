@@ -84,6 +84,22 @@
       "quantity": "5",
       "category": "electronics",
       "img": "https://f.nooncdn.com/p/v1663755624/N11411335A_1.jpg?format=avif&width=800"
+    },
+    {
+      "id": "9d33",
+      "name": "Wireless Computer Mouse W10 Rechargeable Slim Silent Multicolour",
+      "price": "29",
+      "quantity": "6",
+      "category": "electronics",
+      "img": "https://f.nooncdn.com/p/pnsku/N70006744V/45/_/1728988633/39e8b47c-c7fe-4b87-a908-0ceb8e2978eb.jpg?format=avif&width=240"
+    },
+    {
+      "id": "742a",
+      "name": "Dancing And Recording Cactus Plush Toy With 120 Songs + USB Charging For Kids - Packaging May Vary 32cm",
+      "price": "29",
+      "quantity": "61",
+      "category": "toys",
+      "img": "https://f.nooncdn.com/p/v1635445544/N47729379A_1.jpg?format=avif&width=240"
     }
   ],
   "users": [
@@ -135,16 +151,22 @@
     {
       "id": "7782",
       "fullName": "Lyan",
-      "email": "Lyan@gmail.com",
+      "email": "lyan@gmail.com",
       "password": "123456",
-      "role": "user"
+      "role": "user",
+      "phone": "",
+      "address": "",
+      "avatar": ""
     },
     {
       "id": "4317",
       "fullName": "fatma",
       "email": "fatma@gmail.com",
       "password": "22101995",
-      "role": "user"
+      "role": "user",
+      "phone": "",
+      "address": "",
+      "avatar": ""
     },
     {
       "id": "9e35",

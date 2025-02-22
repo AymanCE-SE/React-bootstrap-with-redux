@@ -31,7 +31,7 @@ export default function Footer() {
                     <div>
                       <h5>Menu</h5>
                       <ul className="list-unstyled ">
-                        <li><a className='text-dark text-decoration-none' href="#">Home</a></li>
+                        <li><Link to={"/"} className='text-dark text-decoration-none' href="#">Home</Link></li>
                         <li><a className='text-dark text-decoration-none' href="#">About</a></li>
                         <li><a className='text-dark text-decoration-none' href="#">Services</a></li>
                         <li><a className='text-dark text-decoration-none' href="#">Testimonial</a></li>
