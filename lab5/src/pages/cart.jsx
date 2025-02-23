@@ -65,7 +65,7 @@ const Cart = () => {
           <FaShoppingCart size={60} className="text-muted mb-4" />
           <h2 className="mb-3">Your Cart is Empty</h2>
           <p className="text-muted mb-4">Looks like you haven't added any items to your cart yet.</p>
-          <Button variant="primary" onClick={() => navigate('/')}>
+          <Button variant="danger" onClick={() => navigate('/')}>
             Continue Shopping
           </Button>
         </div>

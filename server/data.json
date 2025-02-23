@@ -6,7 +6,7 @@
       "price": "99",
       "category": "library",
       "img": "https://f.nooncdn.com/p/pnsku/N48987347A/45/_/1696838105/4453fe56-c671-4340-a137-ec1862be60fe.jpg?format=avif&width=800",
-      "quantity": 71
+      "quantity": 61
     },
     {
       "id": "d2f6",
@@ -21,7 +21,7 @@
       "id": "495e",
       "name": "Laptop acer aspire 3",
       "price": "659",
-      "quantity": "4",
+      "quantity": 3,
       "category": "electronics",
       "img": "https://m.media-amazon.com/images/I/61VP5u3eVhL._AC_UY218_.jpg",
       "status": "IN STOCK"
@@ -48,7 +48,7 @@
       "id": "39bf",
       "name": "Mintra Men's Cai Slip On Shoes",
       "price": "350",
-      "quantity": 10,
+      "quantity": 9,
       "category": "fashion",
       "img": "https://m.media-amazon.com/images/I/71FA+zbp8zL._AC_SX625_.jpg"
     },
@@ -97,7 +97,7 @@
       "id": "742a",
       "name": "Dancing And Recording Cactus Plush Toy With 120 Songs + USB Charging For Kids - Packaging May Vary 32cm",
       "price": "29",
-      "quantity": 60,
+      "quantity": 57,
       "category": "toys",
       "img": "https://f.nooncdn.com/p/v1635445544/N47729379A_1.jpg?format=avif&width=240"
     }
@@ -171,9 +171,36 @@
     {
       "id": "9e35",
       "fullName": "hussein",
+      "email": "hussien@gmail.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "8bdf",
+      "fullName": "amr hossam",
+      "email": "amr@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "phone": "0123456789",
+      "address": "zagazig",
+      "avatar": ""
+    },
+    {
+      "id": "675a",
+      "fullName": "hussein mahmoud",
       "email": "hussein@gmail.com",
       "password": "123456",
       "role": "user"
+    },
+    {
+      "id": "f713",
+      "fullName": "HuSSein",
+      "email": "hussein123@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "phone": "0123456789",
+      "address": "ismailia",
+      "avatar": ""
     }
   ]
 }

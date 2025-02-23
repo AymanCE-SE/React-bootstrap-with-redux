@@ -11,6 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [validationError, setValidationError] = useState(null);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,31 +26,37 @@ const Login = () => {
   }, [currentUser, navigate]);
 
   const validateForm = () => {
+    setValidationError(null); // Reset previous errors
+
     if (!email.trim()) {
-      return "Email is required";
+      setValidationError("Email is required");
+      return true;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return "Please enter a valid email address";
+      setValidationError("Please enter a valid email address");
+      return true;
     }
 
     if (!password.trim()) {
-      return "Password is required";
+      setValidationError("Password is required");
+      return true;
     }
 
     if (password.length < 6) {
-      return "Password must be at least 6 characters";
+      setValidationError("Password must be at least 6 characters");
+      return true;
     }
 
-    return null;
+    return false;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const validationError = validateForm();
-    if (validationError) {
+    const hasErrors = validateForm();
+    if (hasErrors) {
       return;
     }
 
@@ -73,11 +80,11 @@ const Login = () => {
 
         <h2 className="text-center mb-4 fw-bold">Welcome Back!</h2>
 
-        {errors && (
+        {(validationError || errors) && (
           <Alert variant="danger" className="animate__animated animate__shakeX">
             <div className="d-flex align-items-center">
               <i className="bi bi-exclamation-circle me-2"></i>
-              {errors}
+              {validationError || errors}
             </div>
           </Alert>
         )}
@@ -111,7 +118,8 @@ const Login = () => {
                 className="position-absolute end-0 top-50 translate-middle-y border-0"
                 onClick={() => setShowPassword(!showPassword)}
                 style={{ zIndex: 10 }}
-                disabled={isLoading}>
+                disabled={isLoading}
+              >
                 {showPassword ? (
                   <EyeOff size={20} className="text-muted" />
                 ) : (
@@ -131,7 +139,8 @@ const Login = () => {
             />
             <Link
               to="/forgot-password"
-              className="text-danger text-decoration-none">
+              className="text-danger text-decoration-none"
+            >
               Forgot Password?
             </Link>
           </div>
@@ -141,8 +150,9 @@ const Login = () => {
               variant="danger"
               type="submit"
               className="py-2 rounded-3"
+              disabled={isLoading}
             >
-              Login
+              {isLoading ? "Logging in..." : "Login"}
             </Button>
           </div>
 

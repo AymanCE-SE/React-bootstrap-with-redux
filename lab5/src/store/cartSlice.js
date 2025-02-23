@@ -28,7 +28,6 @@ const saveCartToStorage = (cart) => {
 };
 
 const initialState = loadCartFromStorage();
-console.log(initialState)
 
 const cartSlice = createSlice({
   name: "cart",

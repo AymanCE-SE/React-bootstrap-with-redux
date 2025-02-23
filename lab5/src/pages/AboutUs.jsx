@@ -18,7 +18,7 @@ export default function AboutUs() {
             <div className=" hero-section  text-white text-center d-flex flex-column justify-content-center align-items-center py-5">
               <Container>
               <h1 className=" display-3 fw-bold  text-danger">About Us</h1>
-              <p className="lead mt-3 fs-4 text-danger">Your Trusted Destination for Quality Products & Exceptional Service.</p>
+              <p className="lead mt-3 fs-4 text-danger ">Your Trusted Destination for Quality Products & Exceptional Service.</p>
               <Link className="btn btn-outline-danger btn-lg mt-3" to={'/'}>Back To Home</Link>
       
               </Container>
@@ -59,61 +59,60 @@ export default function AboutUs() {
       </Container>
 
         {/* */}
-        <div className="my-5 bg-body-tertiary">
-      <Row className="align-items-center">
-        {/* Left Side - Single Image */}
-        <Col lg={6} className="text-center">
-          <img
-            src={about2}
-            alt="Online Shopping"
-            style={{ height: "500px",width:"600px"}} 
-            className="img-fluid rounded "
-          />
-        </Col>
+      <Container className="my-5 bg-body-tertiary">
+        <Row className="align-items-center">
+          {/* Left Side - Single Image */}
+          <Col md={6} className="text-center mb-4 mb-md-0">
+            <img
+              src={about1}
+              alt="Online Shopping"
+              style={{ height: "450px", width: "100%" }}
+              className="img-fluid rounded"
+            />
+          </Col>
 
-        {/* Right Side - Text & Features */}
-        <Col lg={6}>
-          <h6 className="text-danger fw-bold">About Us</h6>
-          <h2 className="fw-bold text-primary">
-            Your Trusted Online Shopping Destination
-          </h2>
-          <p className="text-muted">
-            We offer a wide range of high-quality products at unbeatable prices. 
-            Enjoy a seamless shopping experience with fast delivery and 
-            excellent customer support.
-          </p>
+          {/* Right Side - Text & Features */}
+          <Col md={6}>
+            <h5 className="text-danger fw-bold fs-3 alert ">About Us</h5>
+            <h2 className="fw-bold text-black-50">
+              Your Trusted Online Shopping Destination
+            </h2>
+            <p className="text-muted">
+              We offer a wide range of high-quality products at unbeatable prices.
+              Enjoy a seamless shopping experience with fast delivery and
+              excellent customer support.
+            </p>
 
-
-          {/* Features */}
-          <Row>
-            <Col md={6}>
-              <Card className="p-3  border-0 shadow-sm">
-                <FaShippingFast size={30} className="text-success" />
-                <h6 className="mt-2 fw-bold">Fast & Free Delivery</h6>
-              </Card>
-            </Col>
-            <Col md={6}>
-              <Card className="p-3 border-0 shadow-sm">
-                <FaTags size={30} className="text-primary" />
-                <h6 className="mt-2 fw-bold">Best Deals & Prices</h6>
-              </Card>
-            </Col>
-            <Col md={6} className="mt-3">
-              <Card className="p-3 border-0 shadow-sm">
-                <FaHeadset size={30} className="text-danger" />
-                <h6 className="mt-2 fw-bold">24/7 Customer Support</h6>
-              </Card>
-            </Col>
-            <Col md={6} className="mt-3">
-              <Card className="p-3 border-0 shadow-sm">
-                <FaShieldAlt size={30} className="text-purple" />
-                <h6 className="mt-2 fw-bold">Secure Payment</h6>
-              </Card>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </div>
+            {/* Features */}
+            <Row>
+              <Col xs={6} className="mb-3">
+                <Card className="p-3 border-0 shadow-sm text-center">
+                  <FaShippingFast size={30} className="text-success" />
+                  <h6 className="mt-2 fw-bold">Fast & Free Delivery</h6>
+                </Card>
+              </Col>
+              <Col xs={6} className="mb-3">
+                <Card className="p-3 border-0 shadow-sm text-center">
+                  <FaTags size={30} className="text-primary" />
+                  <h6 className="mt-2 fw-bold">Best Deals & Prices</h6>
+                </Card>
+              </Col>
+              <Col xs={6}>
+                <Card className="p-3 border-0 shadow-sm text-center">
+                  <FaHeadset size={30} className="text-danger" />
+                  <h6 className="mt-2 fw-bold">24/7 Customer Support</h6>
+                </Card>
+              </Col>
+              <Col xs={6}>
+                <Card className="p-3 border-0 shadow-sm text-center">
+                  <FaShieldAlt size={30} className="text-purple" />
+                  <h6 className="mt-2 fw-bold">Secure Payment</h6>
+                </Card>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
         {/* */}
 
       {/* Our Story */}
