@@ -115,20 +115,6 @@ export default function AboutUs() {
       </Container>
         {/* */}
 
-      {/* Our Story */}
-      {/* <Container className="my-5">
-        <Row className="justify-content-center">
-          <Col md={10} lg={8}>
-            <h2 className="fw-bold text-center text-danger">Our Story</h2>
-            <p className="text-muted text-center">
-              We started with a mission to bring the best products at unbeatable
-              prices. With passion for quality and customer satisfaction, we
-              have grown into a trusted name in e-commerce.
-            </p>
-          </Col>
-        </Row>
-      </Container> */}
-
 
       {/* Meet the Team */}
       <Container className="my-5 text-center">
@@ -181,7 +167,7 @@ export default function AboutUs() {
       </Container>
 
       {/* Why Choose Us */}
-      {/* <Container className="my-5 text-center">
+      <Container className="my-5 text-center">
         <h2 className="fw-bold text-danger">Why Choose Us?</h2>
         <p className="text-muted">Here’s why we stand out.</p>
         <Row className="g-4">
@@ -204,7 +190,7 @@ export default function AboutUs() {
             </Card>
           </Col>
         </Row>
-      </Container> */}
+      </Container>
 
       {/* Call to Action */}
       <Container className="text-center my-5">

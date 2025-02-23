@@ -57,7 +57,6 @@ export const updateUserAction = createAsyncThunk(
   }
 );
 
-// Keep your existing actions
 export const registerUserAction = createAsyncThunk(
   "user/registerUserAction",
   async (user, thunkAPI) => {

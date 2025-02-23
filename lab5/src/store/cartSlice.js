@@ -17,8 +17,6 @@ const loadCartFromStorage = () => {
     };
   }
 };
-
-// Save cart to localStorage
 const saveCartToStorage = (cart) => {
   try {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -57,7 +55,6 @@ const cartSlice = createSlice({
       state.totalQuantity = state.cartItems.reduce((total, item) => total + Number(item.quantity), 0);
       state.totalAmount = state.cartItems.reduce((total, item) => total + (Number(item.price) * Number(item.quantity)), 0);
       
-      // Save updated state to localStorage
       saveCartToStorage(state);
     },
 
@@ -66,7 +63,6 @@ const cartSlice = createSlice({
       state.totalQuantity = state.cartItems.reduce((total, item) => total + Number(item.quantity), 0);
       state.totalAmount = state.cartItems.reduce((total, item) => total + (Number(item.price) * Number(item.quantity)), 0);
       
-      // Save updated state to localStorage
       saveCartToStorage(state);
     },
 
@@ -85,7 +81,6 @@ const cartSlice = createSlice({
         state.totalQuantity = state.cartItems.reduce((total, item) => total + Number(item.quantity), 0);
         state.totalAmount = state.cartItems.reduce((total, item) => total + (Number(item.price) * Number(item.quantity)), 0);
         
-        // Save updated state to localStorage
         saveCartToStorage(state);
         }
     },
@@ -93,9 +88,7 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.cartItems = [];
       state.totalQuantity = 0;
-      state.totalAmount = 0;
-      
-      // Clear localStorage when cart is cleared
+      state.totalAmount = 0;      
         localStorage.removeItem('cart');
     }
   }

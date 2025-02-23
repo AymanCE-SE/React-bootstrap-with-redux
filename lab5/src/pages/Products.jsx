@@ -22,12 +22,6 @@ const Products = () => {
     dispatchAction(getAllProductsAction());
   }, []);
   // delete handler
-
-  /**
-   * deleteHandler: deletes a product with given productId
-   * @param {string} productId - the id of the product to be deleted
-   * @returns {Promise<void>}
-   */
   const deleteHandler = async (productId) => {
     Swal.fire({
       title: "Are you sure?",

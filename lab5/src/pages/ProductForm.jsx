@@ -32,10 +32,7 @@ export function ProductForm() {
         });
     }
   }, []);
-  // prepare input data before send
-  // e.target => pickes the input element
-  // e.target.value => pickes the input adding value
-  // e.target.name => pickes the input name which equals to the formData
+
   const inputHandler = (e) => {
     console.log(e.target);
     setFormData({
@@ -51,7 +48,6 @@ export function ProductForm() {
       await dispatch(addProductAction(formData));
     } else {
       await dispatch(editProductAction({ id, product: formData }));
-      // await editProduct(id, formData); // for edit product condition sending it
     }
     navigate("/products");
   };
