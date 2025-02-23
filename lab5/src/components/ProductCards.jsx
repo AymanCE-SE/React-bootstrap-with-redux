@@ -9,32 +9,40 @@ import {
   Row,
   Badge,
   Spinner,
+  Form,
+  ListGroup,
 } from "react-bootstrap";
-import { getAllProducts } from "../api/productapi";
-import { addToCart } from '../store/cartSlice';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsAction } from "../store/productSlice";
+import { addToCart } from "../store/cartSlice";
 import { Link } from "react-router-dom";
 
 export function ProductCards() {
-  const dispatchAction = useDispatch();
+  const dispatch = useDispatch();
   const { products, isLoading, errors } = useSelector(
     (store) => store.productSlice
   );
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
   useEffect(() => {
-    dispatchAction(getAllProductsAction());
-  }, []);
+    dispatch(getAllProductsAction());
+  }, [dispatch]);
 
   const getStockStatus = (quantity) => {
     return parseInt(quantity) > 0 ? "success" : "danger";
   };
 
-  //wishlist button
-  const [isFavorite, setIsFavorite] = useState(false);
-  const handleClick = () => {
-    setIsFavorite((prev) => !prev);
-  };
+  // Extract unique categories from products
+  const categories = ["All", ...new Set(products.map((product) => product.category))];
+
+  // Filter products based on search term & selected category
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   if (isLoading) {
     return (
@@ -57,87 +65,87 @@ export function ProductCards() {
   }
 
   return (
-    <>
-      <Card.Header className="bg-danger border-radius-lg p-4 rounded-3 shadow">
-        <div className="d-flex justify-content-center align-items-center">
-          <h5 className="text-white fs-3 text-capitalize mb-0">Our Products</h5>
-        </div>
-      </Card.Header>
-      <Container className="my-5">
-        <Row className="g-4">
-          {products.map((product) => (
-            <Col xs={12} sm={6} md={3} key={product.id}>
-              <Card className="h-100 product-card border-0">
-                <div className="img-wrapper position-relative overflow-hidden">
-                  <Card.Img
-                    variant="top"
-                    src={product.img}
-                    alt={product.name}
-                    className="product-image p-3"
-                  />
-                  <div className="hover-overlay position-absolute top-0 start-0 w-100 h-100">
-                    <div className="quick-actions d-flex justify-content-center align-items-center h-100 gap-2">
-                      <Button
-                        variant="light"
-                        size="sm"
-                        className="rounded-circle p-2 border"
-                        onClick={handleClick}
-                      >
-                        <i className={`bi ${isFavorite ? "bi-heart-fill text-danger" : "bi-heart text-dark"} fs-5`}></i>
-                      </Button>
-                      <Button
-                        variant="light"
-                        size="sm"
-                        className="rounded-circle p-2">
-                        <Link to={`products/${product.id}`}>
-                          <i className="bi bi-eye fs-5"></i>
-                        </Link>
-                      </Button>
+    <div className=" container-fluid my-5">
+      <Row>
+        {/* Sidebar Filter */}
+        <Col lg={2} className="border border-end-1 pt-5">
+          {/* <Card className="p-3 shadow-sm"> */}
+            <h5 className="mb-3 text-primary">Filter by Category</h5>
+            <ListGroup>
+              {categories.map((category, index) => (
+                <ListGroup.Item
+                  key={index}
+                  active={selectedCategory === category}
+                  action
+                  onClick={() => setSelectedCategory(category)}
+                >
+                  {category}
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          {/* </Card> */}
+        </Col>
+
+        {/* Main Content */}
+        <Col lg={10}>
+          {/* Search Bar */}
+          <Form className="mb-4">
+            <Form.Control
+              type="text"
+              placeholder="Search for a product..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </Form>
+
+          {/* Products List */}
+          <Row className="g-4">
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
+                <Col xs={12} sm={6} md={4} lg={3} key={product.id}>
+                  <Card className="h-100 product-card border-0">
+                    <div className="img-wrapper position-relative overflow-hidden">
+                      <Card.Img
+                        variant="top"
+                        src={product.img}
+                        alt={product.name}
+                        className="product-image p-3"
+                      />
                     </div>
-                  </div>
-                </div>
 
-                <Card.Body className="d-flex flex-column">
-                  <div className="mb-2">
-                    <Badge bg={getStockStatus(product.quantity)}>
-                      {parseInt(product.quantity) > 0
-                        ? "IN STOCK"
-                        : "OUT OF STOCK"}
-                    </Badge>
-                  </div>
+                    <Card.Body className="d-flex flex-column">
+                      <Badge bg={getStockStatus(product.quantity)}>
+                        {parseInt(product.quantity) > 0 ? "IN STOCK" : "OUT OF STOCK"}
+                      </Badge>
 
-                  <Card.Title className="h6 mb-2">{product.name}</Card.Title>
+                      <Card.Title className="h6 my-2">{product.name}</Card.Title>
+                      <Card.Text className="text-muted small">
+                        Category: {product.category}
+                      </Card.Text>
 
-                  <Card.Text className="text-muted small mb-2">
-                    Category: {product.category}
-                  </Card.Text>
+                      <div className="d-flex justify-content-between align-items-center mt-auto">
+                        <span className="h5 mb-0">${product.price}</span>
 
-                  <div className="d-flex justify-content-between align-items-center mt-auto">
-                    <span className="h5 mb-0">${product.price}</span>
-{parseInt(product.quantity) === 0 ?
-                    <Button
-                      variant="outline-danger"
-                      className="add-to-cart-btn "
-                      disabled={parseInt(product.quantity) === 0}
-                      onClick={() => dispatchAction(addToCart(product))}
-                    >
-                       Out of Stock
-                    </Button> :
-                    <Button
-                      variant="outline-success"
-                      className="add-to-cart-btn "
-                      disabled={parseInt(product.quantity) === 0}
-                      onClick={() => dispatchAction(addToCart(product))}
-                    >
-                     Add to Cart
-                    </Button>}
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </>
+                        <Button
+                          variant={parseInt(product.quantity) === 0 ? "outline-danger" : "outline-success"}
+                          disabled={parseInt(product.quantity) === 0}
+                          onClick={() => dispatch(addToCart(product))}
+                        >
+                          {parseInt(product.quantity) === 0 ? "Out of Stock" : "Add to Cart"}
+                        </Button>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))
+            ) : (
+              <Col>
+                <p className="text-center text-muted">No products found.</p>
+              </Col>
+            )}
+          </Row>
+        </Col>
+      </Row>
+    </div>
   );
 }

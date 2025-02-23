@@ -23,7 +23,9 @@ import Register from "../pages/register";
 import { useDispatch } from "react-redux";
 import { syncWithLocalStorage } from "../store/userSlice";
 import Profile from "../pages/profile";
-// import Cart from "../pages/cart";
+import Cart from "../pages/cart";
+import ContactUs from "../pages/contactUs";
+import AboutUs from "../pages/AboutUs";
 export function MainLayout() {
   const dispatch = useDispatch();
 
@@ -42,7 +44,9 @@ export function MainLayout() {
             <Route path="Products/:id" element={<ProductDetails />} />
             <Route path="products/:id/edit" element={<ProductForm />} />
             <Route path="myprofile" element={<Profile />} />
-            {/* <Route path="cart" element={<Cart />} /> */}
+            <Route path="cart" element={<Cart />} />
+            <Route path="contact" element={<ContactUs/>} />
+            <Route path="about" element={<AboutUs/>} />
           </Route>
           {/* pages with footer only layout */}
           <Route path="/" element={<FooterOnlyLayout />}>

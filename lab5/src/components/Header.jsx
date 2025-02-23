@@ -6,6 +6,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { logoutUserAction } from "../store/userSlice";
 import logoImg from "../assets/logo.png";
 
+
 export function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -57,8 +58,10 @@ export function Header() {
 
             <NavDropdown title="Pages" id="basic-nav-dropdown">
               <Link className="dropdown-item" to={`/myprofile`}>My Profile</Link>
-              <NavDropdown.Item href="#action/3.2">Contact Us</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">About</NavDropdown.Item>
+              <Link className="dropdown-item" to={`contact`}>Contact Us</Link>
+              <Link className="dropdown-item" to={`about`}>About Us</Link>
+              {/* <NavDropdown.Item href="#action/3.2">Contact Us</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">About</NavDropdown.Item> */}
             </NavDropdown>
 
             {currentUser ? (

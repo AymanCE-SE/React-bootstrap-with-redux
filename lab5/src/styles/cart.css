@@ -1,0 +1,19 @@
+.quantity-controls .btn {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+  }
+  
+  .quantity-controls .btn:hover:not(:disabled) {
+    background-color: #e9ecef;
+  }
+  
+  .cart-items .card:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+  }
