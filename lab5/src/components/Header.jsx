@@ -10,6 +10,7 @@ export function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((store) => store.userSlice);
+  const { totalQuantity } = useSelector((state) => state.cartSlice);
 
   const handleLogout = () => {
     dispatch(logoutUserAction());
@@ -73,7 +74,7 @@ export function Header() {
                     to="/cart"
                   >
                     <span className="d-flex align-items-center gap-1">
-                      <FaCartShopping /> (0)
+                      <FaCartShopping /> ({totalQuantity})
                     </span>
                   </NavLink>
                 )}

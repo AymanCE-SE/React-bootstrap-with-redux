@@ -11,6 +11,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { getAllProducts } from "../api/productapi";
+import { addToCart } from '../store/cartSlice';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsAction } from "../store/productSlice";
 import { Link } from "react-router-dom";
@@ -113,12 +114,23 @@ export function ProductCards() {
 
                   <div className="d-flex justify-content-between align-items-center mt-auto">
                     <span className="h5 mb-0">${product.price}</span>
+{parseInt(product.quantity) === 0 ?
                     <Button
-                      variant="primary"
-                      className="add-to-cart-btn"
-                      disabled={parseInt(product.quantity) === 0}>
-                      Add to Cart
-                    </Button>
+                      variant="outline-danger"
+                      className="add-to-cart-btn "
+                      disabled={parseInt(product.quantity) === 0}
+                      onClick={() => dispatchAction(addToCart(product))}
+                    >
+                       Out of Stock
+                    </Button> :
+                    <Button
+                      variant="outline-success"
+                      className="add-to-cart-btn "
+                      disabled={parseInt(product.quantity) === 0}
+                      onClick={() => dispatchAction(addToCart(product))}
+                    >
+                     Add to Cart
+                    </Button>}
                   </div>
                 </Card.Body>
               </Card>

@@ -12,6 +12,7 @@ import "../styles/HomeSlider.css";
 import "../styles/ProductCards.css";
 import "../styles/login.css";
 import "../styles/header.css";
+import "../styles/cart.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { NotFound } from "../pages/notFound";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -22,6 +23,7 @@ import Register from "../pages/register";
 import { useDispatch } from "react-redux";
 import { syncWithLocalStorage } from "../store/userSlice";
 import Profile from "../pages/profile";
+// import Cart from "../pages/cart";
 export function MainLayout() {
   const dispatch = useDispatch();
 
@@ -40,6 +42,7 @@ export function MainLayout() {
             <Route path="Products/:id" element={<ProductDetails />} />
             <Route path="products/:id/edit" element={<ProductForm />} />
             <Route path="myprofile" element={<Profile />} />
+            {/* <Route path="cart" element={<Cart />} /> */}
           </Route>
           {/* pages with footer only layout */}
           <Route path="/" element={<FooterOnlyLayout />}>

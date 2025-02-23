@@ -48,3 +48,7 @@
 .add-to-cart-btn:hover {
     transform: scale(1.05);
 }
+
+.product-card:hover .add-to-cart-btn {
+    transform: scale(1.1);
+}

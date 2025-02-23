@@ -6,7 +6,7 @@
       "price": "99",
       "category": "library",
       "img": "https://f.nooncdn.com/p/pnsku/N48987347A/45/_/1696838105/4453fe56-c671-4340-a137-ec1862be60fe.jpg?format=avif&width=800",
-      "quantity": "72"
+      "quantity": 71
     },
     {
       "id": "d2f6",
@@ -39,7 +39,7 @@
       "id": "dc33",
       "name": "Soundcore Wireless Noise Cancelling Earbuds, White, Small, A3947",
       "price": "300",
-      "quantity": "54",
+      "quantity": 52,
       "category": "electronics",
       "img": "https://m.media-amazon.com/images/I/41OwyjGaK5L.__AC_SX300_SY300_QL70_ML2_.jpg",
       "status": "IN STOCK"
@@ -48,7 +48,7 @@
       "id": "39bf",
       "name": "Mintra Men's Cai Slip On Shoes",
       "price": "350",
-      "quantity": "12",
+      "quantity": 10,
       "category": "fashion",
       "img": "https://m.media-amazon.com/images/I/71FA+zbp8zL._AC_SX625_.jpg"
     },
@@ -56,7 +56,7 @@
       "id": "cf7d",
       "name": "Galaxy S24 Ultra 5G Dual SIM Titanium Gray 12GB RAM 256GB - Middle East Version",
       "price": "1100",
-      "quantity": "22",
+      "quantity": 20,
       "category": "electronics",
       "img": "https://f.nooncdn.com/p/pnsku/N70035206V/45/_/1712239207/3e7c97e2-cf7d-48ee-b324-a5d4aa30efe8.jpg?format=avif&width=800",
       "status": "IN STOCK"
@@ -65,7 +65,7 @@
       "id": "9acd",
       "name": "PlayStation 5 Slim Console (International Version) Digital Edition With Controller",
       "price": "3000",
-      "quantity": "6",
+      "quantity": 6,
       "category": "electronics",
       "img": "https://f.nooncdn.com/p/pnsku/N70022612V/45/_/1699418559/6b1cfe46-2782-4a5e-a20b-0b5830c73930.jpg?format=avif&width=800"
     },
@@ -97,7 +97,7 @@
       "id": "742a",
       "name": "Dancing And Recording Cactus Plush Toy With 120 Songs + USB Charging For Kids - Packaging May Vary 32cm",
       "price": "29",
-      "quantity": "61",
+      "quantity": 60,
       "category": "toys",
       "img": "https://f.nooncdn.com/p/v1635445544/N47729379A_1.jpg?format=avif&width=240"
     }
