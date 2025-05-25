@@ -109,8 +109,8 @@
       "email": "ayman@admin.com",
       "password": "22101995",
       "role": "admin",
-      "phone": "01159090880",
-      "address": "Abu Hammad Elsharkya - Egypt",
+      "phone": "0123456789",
+      "address": "sharkya - Egypt",
       "avatar": "https://via.placeholder.com/150"
     },
     {
@@ -201,6 +201,13 @@
       "phone": "0123456789",
       "address": "ismailia",
       "avatar": ""
+    },
+    {
+      "id": "878c",
+      "fullName": "ayman",
+      "email": "19ayma95@gmail.com",
+      "password": "123654789",
+      "role": "user"
     }
   ]
 }

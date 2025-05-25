@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
-import '../styles/ContactUs.css'
+import '../styles/contactUs.css'
 
 export default function ContactUs() {
   return (

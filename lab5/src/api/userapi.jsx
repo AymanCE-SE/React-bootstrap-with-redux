@@ -1,7 +1,8 @@
+/** @format */
+
 import axios from "axios";
 
-
-const baseURL = "http://localhost:3005/users";
+const baseURL = "http://localhost:5000/users";
 
 const getAllUsers = () => axios.get(baseURL);
 const getUserById = (userId) => axios.get(`${baseURL}/${userId}`);

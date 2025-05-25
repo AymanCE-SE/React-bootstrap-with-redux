@@ -9,7 +9,7 @@ import img3 from '../assets/3.jpg.png'
 import about1 from '../assets/about-1.webp'
 import about2 from '../assets/about-2.webp'
 import about3 from '../assets/about-3.webp'
-import '../styles/ContactUs.css'
+import '../styles/contactUs.css'
 
 export default function AboutUs() {
   return (
