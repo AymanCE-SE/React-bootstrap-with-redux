@@ -1,12 +1,13 @@
-import { create, router as _router, defaults } from 'json-server'
-import cors from 'cors'
-const server = create()
-const router = _router('db.json')
-const middlewares = defaults()
+const jsonServer = require('json-server');
+const cors = require('cors');
 
-server.use(cors())
-server.use(middlewares)
-server.use('/api', router)
+const server = jsonServer.create();
+const router = jsonServer.router('server/db.json');
+const middlewares = jsonServer.defaults();
 
-const PORT = process.env.PORT || 5000
-server.listen(PORT, () => console.log('JSON Server is running'))
+server.use(cors());
+server.use(middlewares);
+server.use(jsonServer.rewriter({ '/api/*': '/$1' }));
+server.use(router);
+
+module.exports = server;
