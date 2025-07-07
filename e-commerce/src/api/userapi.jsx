@@ -2,7 +2,7 @@
 
 import axios from "axios";
 
-const baseURL = "http://localhost:5000/users";
+const baseURL = "https://json-server-kohl-delta-49.vercel.app/users";
 
 const getAllUsers = () => axios.get(baseURL);
 const getUserById = (userId) => axios.get(`${baseURL}/${userId}`);

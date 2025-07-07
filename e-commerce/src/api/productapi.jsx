@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "axios";
-const baseURL = "http://localhost:5000/products";
+const baseURL = "https://json-server-kohl-delta-49.vercel.app/products";
 
 const getAllProducts = () => axios.get(baseURL);
 const getProductById = (productId) => axios.get(`${baseURL}/${productId}`);
