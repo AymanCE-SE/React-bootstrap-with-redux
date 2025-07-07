@@ -1,16 +1,19 @@
+// api/server.js
 const jsonServer = require("json-server");
 const fs = require("fs");
 const path = require("path");
 const os = require("os");
 
-// Copy db.json into the **temporary** writable directory
-const tmpDb = path.join(os.tmpdir(), "db.json");
-if (!fs.existsSync(tmpDb)) {
-  fs.copyFileSync(path.join(__dirname, "db.json"), tmpDb);
-}
+// Source: db.json within deployment bundle
+const src = path.join(__dirname, "db.json");
+// Destination: writable path in serverless environment
+const dst = path.join(os.tmpdir(), "db.json");
+
+// Always copy fresh db.json from read-only bundle into tmp
+fs.copyFileSync(src, dst);
 
 const server = jsonServer.create();
-const router = jsonServer.router(tmpDb);
+const router = jsonServer.router(dst);
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
