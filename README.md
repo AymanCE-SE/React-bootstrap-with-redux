@@ -63,7 +63,7 @@ npm start
 [Watch the demo here](https://1drv.ms/v/c/33064a6e3ca91dd0/EckVi9JXpWJCmavj3kmGpcIBQXD_1QW1g7KVAPZZWfDsKw?e=PdCRbX) 
 
 ## 📊 Deployed Link
-[Deployed Link](https://react-bootstrap-with-redux-f6ma7j0i3.vercel.app/)
+[Deployed Link](https://react-bootstrap-with-redux.vercel.app/)
 
 ---
 💡 **Feedback & Contributions are Welcome!** 🚀
