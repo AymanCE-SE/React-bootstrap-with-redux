@@ -1,13 +1,31 @@
-import { create, router as _router, defaults, rewriter } from 'json-server';
-import cors from 'cors';
+const jsonServer = require("json-server");
 
-const server = create();
-const router = _router('api/db.json');
-const middlewares = defaults();
+const server = jsonServer.create();
 
-server.use(cors());
+// Uncomment to allow write operations
+const fs = require("fs");
+const path = require("path");
+const filePath = path.join("db.json");
+const data = fs.readFileSync(filePath, "utf-8");
+const db = JSON.parse(data);
+const router = jsonServer.router(db);
+
+// Comment out to allow write operations
+// const router = jsonServer.router('db.json')
+
+const middlewares = jsonServer.defaults();
+
 server.use(middlewares);
-server.use(rewriter({ '/api/*': '/$1' }));
+// Add this before server.use(router)
+server.use(
+  jsonServer.rewriter({
+    "/api/*": "api",
+  })
+);
 server.use(router);
+server.listen(3000, () => {
+  console.log("JSON Server is running");
+});
 
-export default server;
+// Export the Server API
+module.exports = server;
