@@ -2,6 +2,7 @@
 	"name": "json-server-vercel",
 	"version": "1.0.0",
   	"main": "api/server.js",
+	"type": "module",
   	"scripts": {
     "start": "node api/server.js"
 	},
