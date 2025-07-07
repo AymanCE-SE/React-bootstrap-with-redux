@@ -2,7 +2,7 @@
   "functions": {
     "server/server.js": {
       "memory": 512,
-      "includeFiles": ["server/db.json"]
+      "includeFiles": "server/db.json"
     }
   },
   "rewrites": [
