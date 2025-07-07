@@ -1,14 +1,12 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/server.js": {
-      "memory": 1024,
-      "includeFiles": "db.json"
+      "memory": 512,
+      "includeFiles": "api/db.json"
     }
   },
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "api/server.js"
-    }
+    { "source": "/(.*)", "destination": "/api/server.js" }
   ]
 }

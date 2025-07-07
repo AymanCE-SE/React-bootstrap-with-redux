@@ -3,25 +3,18 @@ const fs = require("fs");
 const path = require("path");
 const os = require("os");
 
-// Source and destination paths
-const src = path.join(__dirname, "db.json");
-const dest = path.join(os.tmpdir(), "db.json");
+// Copy db.json into the **temporary** writable directory
+const tmpDb = path.join(os.tmpdir(), "db.json");
+if (!fs.existsSync(tmpDb)) {
+  fs.copyFileSync(path.join(__dirname, "db.json"), tmpDb);
+}
 
-// Copy db.json into the writable tmp directory on each invocation
-fs.copyFileSync(src, dest);
-
-// Create and configure JSON Server
 const server = jsonServer.create();
-const router = jsonServer.router(dest);
+const router = jsonServer.router(tmpDb);
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
-server.use(
-  jsonServer.rewriter({
-    "/api/*": "/$1"
-  })
-);
+server.use(jsonServer.rewriter({ "/api/*": "/$1" }));
 server.use(router);
 
-// Export the configured server (no server.listen here)
 module.exports = server;
